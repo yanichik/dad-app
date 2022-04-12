@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Activities from "./pages/Activities";
+import ActivityFeed from "./pages/ActivityFeed";
+import Profile from "./pages/Profile";
+import Donate from "./pages/Donate";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Fragment>
+			<Routes>
+				{/* "/" path conditional -> goes to login when user is logged out. goes to dashboard IF logged in */}
+				<Route exact path="/" element={<Login />} />
+				<Route exact path="/login" element={<Login />} />
+				<Route exact path="/signup" element={<Signup />} />
+			</Routes>
+			<Layout>
+				<Routes>
+					<Route exact path="/dashboard" element={<Dashboard />} />
+					<Route exact path="/activities" element={<Activities />} />
+					<Route exact path="/activityfeed" element={<ActivityFeed />} />
+					<Route exact path="/profile" element={<Profile />} />
+					<Route exact path="/donate" element={<Donate />} />
+				</Routes>
+			</Layout>
+		</Fragment>
+	);
 }
 
 export default App;
