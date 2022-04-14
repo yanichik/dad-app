@@ -1,52 +1,58 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import axios from 'axios'
+import axios from "axios";
 
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Layout from "./components/Layout/Layout";
+import AuthContext from "./store/auth-context";
 
 function App() {
-  const [activities, setActivities] = useState([])
-  const [activitiesFetched, setActivitiesFetched] = useState(false)
+	const [activities, setActivities] = useState([]);
+	const [activitiesFetched, setActivitiesFetched] = useState(false);
 
-  useEffect(() => {
-    if (!activitiesFetched) {
-      async function fetchActivities() {
-        const response = await axios({
-          method: 'GET',
-          url: `${process.env.REACT_APP_APIHOST}/api/activities`,
-          headers: { 'content-format': 'application/json' }
-        })
+	useEffect(() => {
+		if (!activitiesFetched) {
+			async function fetchActivities() {
+				const response = await axios({
+					method: "GET",
+					url: `${process.env.REACT_APP_APIHOST}/api/activities`,
+					headers: { "content-format": "application/json" },
+				});
 
-        setActivities(response.data)
-      }
+				setActivities(response.data);
+			}
 
-      fetchActivities()
-      setActivitiesFetched(true)
-    }
-  }, [ activitiesFetched ])
+			fetchActivities();
+			setActivitiesFetched(true);
+		}
+	}, [activitiesFetched]);
 
-  let status = 'Loading ...';
-  if (!!activities) status = `${activities.length} activities found.`;
+	let status = "Loading ...";
+	if (!!activities) status = `${activities.length} activities found.`;
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {status}
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<AuthContext.Provider value={{ isLoggedIn: false }}>
+			<Layout>
+				<div className="App">
+					<header className="App-header">
+						<img src={logo} className="App-logo" alt="logo" />
+						<p>
+							Edit <code>src/App.js</code> and save to reload.
+						</p>
+						<a
+							className="App-link"
+							href="https://reactjs.org"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{status}
+						</a>
+					</header>
+				</div>
+			</Layout>
+		</AuthContext.Provider>
+	);
 }
 
 export default App;
