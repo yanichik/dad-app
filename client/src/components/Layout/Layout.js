@@ -7,9 +7,11 @@ const Layout = (props) => {
 	const ctx = useContext(AuthContext);
 	return (
 		<Fragment>
-			{ctx.isLoggedIn && <Navbar />}
-			{!ctx.isLoggedIn && <Auth />}
-			<main>{props.children}</main>
+			<main>
+				{ctx.isLoggedIn && <Navbar />}
+				{!ctx.isLoggedIn && <Auth />}
+				{props.children}
+			</main>
 		</Fragment>
 	);
 };

@@ -58,3 +58,17 @@
 .throttle_right {
 	color: blue;
 }
+
+.auth_page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+}
+
+.login_welcome,
+.signup_welcome {
+	display: inherit;
+	flex-direction: column;
+	align-items: center;
+}

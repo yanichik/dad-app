@@ -7,40 +7,72 @@ export default function Auth(props) {
 	const submitHandler = (e) => {
 		e.preventDefault();
 	};
-	const throttleLoginRegisterHandler = () => {
-		setShowLogin((prevShowLogin) => {
-			setShowLogin(!prevShowLogin);
-		});
+	const throttleLoginRegisterHandler = (input) => {
+		if (input.includes("throttle_left")) {
+			setShowLogin(true);
+		} else {
+			setShowLogin(false);
+		}
 	};
 	const loginDiv = (
-		<div className="login">
+		<div className="auth_page">
 			<div className="login_welcome">
 				<h3>Hello Again!</h3>
-				<form onSubmit={submitHandler}>
-					<label>
-						Username:
-						<input type="text" name="name" />
-					</label>
-					<label>
-						Password:
-						<input type="password" name="password" />
-					</label>
-					<input type="submit" value="Submit" />
-				</form>
-				<Throttle
-					showLeftThrottle={showLogin}
-					onShowLeftThrottle={throttleLoginRegisterHandler}
-					buttonNames={{ throttle_left: "Register", throttle_right: "Sign In" }}
-					throttleClass="throttle_register_login"
-				/>
+				<p>Welcome back, you've been missed.</p>
 			</div>
+			<form onSubmit={submitHandler}>
+				<label>
+					Email Address:
+					<input type="email" name="email" />
+				</label>
+				<label>
+					Password:
+					<input type="password" name="password" />
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
+			<Throttle
+				showLeftThrottle={showLogin}
+				onShowLeftThrottle={throttleLoginRegisterHandler}
+				buttonNames={{ throttle_left: "Login", throttle_right: "Register" }}
+				throttleClass="throttle_register_login"
+			/>
+		</div>
+	);
+	const signupDiv = (
+		<div className="auth_page">
+			<div className="signup_welcome">
+				<h3>Welcome!</h3>
+				<p>Join us and become a cool dad.</p>
+			</div>
+			<form onSubmit={submitHandler}>
+				<label>
+					Email Address:
+					<input type="email" name="email" />
+				</label>
+				<label>
+					Password:
+					<input type="password" name="password" />
+				</label>
+				<label>
+					Password:
+					<input type="password" name="password" />
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
+			<Throttle
+				showLeftThrottle={showLogin}
+				onShowLeftThrottle={throttleLoginRegisterHandler}
+				buttonNames={{ throttle_left: "Login", throttle_right: "Register" }}
+				throttleClass="throttle_register_login"
+			/>
 		</div>
 	);
 	return (
 		<Fragment>
 			<AuthImg />
 			{showLogin && loginDiv}
-			{/* {!showLogin && signupDiv} */}
+			{!showLogin && signupDiv}
 		</Fragment>
 	);
 }
