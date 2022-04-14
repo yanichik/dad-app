@@ -1,22 +1,17 @@
 {
-	"name": "dad-app",
-	"version": "0.0.1",
-	"description": "",
-	"main": "server.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"heroku-postbuild": "cd client && npm install && npm run build"
-	},
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"cors": "^2.8.5",
-		"dotenv": "^16.0.0",
-		"express": "^4.17.3",
-		"mongoose": "^6.2.10"
-	},
-	"devDependencies": {
-		"web-vitals": "^2.1.4"
-	},
-	"type": "module"
+  "name": "dadapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.11"
+  }
 }

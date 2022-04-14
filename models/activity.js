@@ -1,26 +1,13 @@
-// let mongoose = require("mongoose");
-import mongoose from "mongoose";
+let mongoose = require('mongoose');
 
-let activitySchema = new mongoose.Schema(
-	{
-		_id: mongoose.Schema.Types.ObjectId,
-		name: String,
-		similarActivities: [
-			{ type: mongoose.Schema.Types.ObjectId, ref: "Activity" },
-		],
-		geography: { lon: Number, lat: Number },
-		activityType: String,
-		coverImage: String,
-		images: [String],
-		dadList: [String],
-		equipmentList: [String],
-		numberOfKids: { from: Number, to: Number },
-		paid: { type: Boolean, default: false },
-	},
-	{ timestamps: true }
-);
+let activitySchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  name: String,
+  address: String,
+  location: { lon: Number, lat: Number },
+  paid: { type: Boolean, default: false },
+  price: Number,
+  children: { min: Number, max: Number }
+},{ timestamps: true });
 
-// module.exports = mongoose.model('Activity', activitySchema);
-// export default mongoose.model("Activity", activitySchema);
-const Activity = mongoose.model("Activity", activitySchema);
-export default Activity;
+module.exports = mongoose.models?.Activity || mongoose.model('Activity', activitySchema);

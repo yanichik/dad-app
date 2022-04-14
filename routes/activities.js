@@ -1,45 +1,32 @@
-// const mongoose = require("mongoose");
-import mongoose from "mongoose";
-// const express = require("express");
-import express from "express";
+const mongoose = require('mongoose');
+const express = require('express');
 
-const activitiesRouter = express.Router();
+const router = express.Router();
 
-import Activity from "../models/activity.js";
+const Activity = require('../models/activity');
 
-// READ all activities
-activitiesRouter.get("/", async (req, res) => {
-	try {
-		const activities = await Activity.find();
+router.get('/:id', async (req, res) => {
+  try {
+    let activity = await Activity.findById(req.params.id)
 
-		res.json(activities);
-	} catch (err) {
-		res.status(500).json({ message: err.message });
-	}
-});
+    if (activity == null) {
+      return res.status(404).json({ message: 'Cant find activity'})
+    } else {
+      res.status(200).json(activity)
+    }
+  } catch(err){
+    return res.status(500).json({ message: err.message })
+  }
+})
 
-// READ activity
-activitiesRouter.get("/:id", getActivity, async (req, res) => {
-	res.json(res.activity);
-});
+router.get('/', async (req, res) => {
+  try {
+    let events = await Activity.find()
 
-// Configure shared middleware
+    res.status(200).json(events)
+  } catch(err){
+    return res.status(500).json({ message: err.message })
+  }
+})
 
-async function getActivity(req, res, next) {
-	try {
-		let activity = await Activity.findById(req.params.id);
-
-		if (activity == null) {
-			return res.status(404).json({ message: "Cant find activity" });
-		}
-	} catch (err) {
-		return res.status(500).json({ message: err.message });
-	}
-
-	res.activity = activity;
-	next();
-}
-
-// module.exports = activitiesRouter;
-
-export default activitiesRouter;
+module.exports = router
