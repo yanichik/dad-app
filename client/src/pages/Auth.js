@@ -20,15 +20,9 @@ export default function Auth(props) {
 				<h3>Hello Again!</h3>
 				<p>Welcome back, you've been missed.</p>
 			</div>
-			<form onSubmit={submitHandler}>
-				<label>
-					Email Address:
-					<input type="email" name="email" />
-				</label>
-				<label>
-					Password:
-					<input type="password" name="password" />
-				</label>
+			<form className="login_signup_form" onSubmit={submitHandler}>
+				<input type="email" name="email" placeholder="Email Address" />
+				<input type="password" name="password" placeholder="Password" />
 				<input type="submit" value="Submit" />
 			</form>
 			<Throttle
@@ -43,21 +37,12 @@ export default function Auth(props) {
 		<div className="auth_page">
 			<div className="signup_welcome">
 				<h3>Welcome!</h3>
-				<p>Join us and become a cool dad.</p>
+				<p>Join us to become a cool dad.</p>
 			</div>
-			<form onSubmit={submitHandler}>
-				<label>
-					Email Address:
-					<input type="email" name="email" />
-				</label>
-				<label>
-					Password:
-					<input type="password" name="password" />
-				</label>
-				<label>
-					Password:
-					<input type="password" name="password" />
-				</label>
+			<form className="login_signup_form" onSubmit={submitHandler}>
+				<input type="email" name="email" placeholder="Email Address" />
+				<input type="password" name="password" placeholder="Password" />
+				<input type="password" name="password" placeholder="Password" />
 				<input type="submit" value="Submit" />
 			</form>
 			<Throttle

@@ -44,19 +44,26 @@
 }
 
 .throttle_register_login {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	/* display: flex; */
+	/* flex-direction: row; */
+	/* justify-content: center; */
+	/* align-items: center; */
 	background-color: blue;
 	border: white solid 1px;
 	border-radius: 10px;
+	width: 100%;
+	height: 30px;
 }
 .throttle_left {
 	color: blue;
+	height: 100%;
+	width: 50%;
 }
 
 .throttle_right {
 	color: blue;
+	height: 100%;
+	width: 50%;
 }
 
 .auth_page {
@@ -71,4 +78,10 @@
 	display: inherit;
 	flex-direction: column;
 	align-items: center;
+}
+
+.login_signup_form {
+	width: 100%;
+	display: inherit;
+	flex-direction: column;
 }
