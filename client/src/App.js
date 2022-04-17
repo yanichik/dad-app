@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import axios from "axios";
 
@@ -33,24 +34,26 @@ function App() {
 
 	return (
 		<AuthContext.Provider value={{ isLoggedIn: false }}>
-			<Layout>
-				<div className="App">
-					<header className="App-header">
-						<img src={logo} className="App-logo" alt="logo" />
-						<p>
-							Edit <code>src/App.js</code> and save to reload.
-						</p>
-						<a
-							className="App-link"
-							href="https://reactjs.org"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{status}
-						</a>
-					</header>
-				</div>
-			</Layout>
+			<BrowserRouter>
+				<Layout>
+					<div className="App">
+						<header className="App-header">
+							<img src={logo} className="App-logo" alt="logo" />
+							<p>
+								Edit <code>src/App.js</code> and save to reload.
+							</p>
+							<a
+								className="App-link"
+								href="https://reactjs.org"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{status}
+							</a>
+						</header>
+					</div>
+				</Layout>
+			</BrowserRouter>
 		</AuthContext.Provider>
 	);
 }

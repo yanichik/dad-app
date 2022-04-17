@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 export default function Throttle(props) {
 	const throttleHandler = (e) => {
@@ -8,22 +9,24 @@ export default function Throttle(props) {
 	return (
 		<Fragment>
 			<div className={props.throttleClass}>
-				<button
+				<Link
+					to={`/${props.buttonNames.throttle_left.toLowerCase()}`}
 					onClick={throttleHandler}
 					className={
 						props.showLeftThrottle ? "throttle_left active" : "throttle_left"
 					}
 				>
 					{props.buttonNames.throttle_left}
-				</button>
-				<button
+				</Link>
+				<Link
+					to={`/${props.buttonNames.throttle_right.toLowerCase()}`}
 					onClick={throttleHandler}
 					className={
 						!props.showLeftThrottle ? "throttle_right active" : "throttle_right"
 					}
 				>
 					{props.buttonNames.throttle_right}
-				</button>
+				</Link>
 			</div>
 		</Fragment>
 	);
