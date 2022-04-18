@@ -7,12 +7,17 @@ import hide_pw from "../assets/hide_pw.png";
 
 export default function Auth(props) {
 	const [showLogin, setShowLogin] = useState(true);
-	const [showPw, setShowPw] = useState(false);
+	const [showPw1, setShowPw1] = useState(false);
+	const [showPw2, setShowPw2] = useState(false);
 	// const [pw1, setPw1] = useState("");
 	// const [pw2, setPw2] = useState("");
 
-	const showPwHandler = () => {
-		setShowPw((prev) => !prev);
+	const showPwHandler1 = () => {
+		setShowPw1((prev) => !prev);
+	};
+
+	const showPwHandler2 = () => {
+		setShowPw2((prev) => !prev);
 	};
 
 	const submitHandler = (e) => {
@@ -38,12 +43,19 @@ export default function Auth(props) {
 					placeholder="Email Address"
 					defaultValue=""
 				/>
-				<input
-					type={showPw ? "text" : "password"}
-					name="password"
-					placeholder="Password"
-					defaultValue=""
-				/>
+				<div className="pw_container_1">
+					<input
+						type={showPw1 ? "text" : "password"}
+						name="password"
+						placeholder="Password"
+						defaultValue=""
+					/>
+					<img
+						onClick={showPwHandler1}
+						src={showPw1 ? show_pw : hide_pw}
+						alt="Show/Hide PW"
+					/>
+				</div>
 				<input type="submit" value="Submit" className="auth_submit" />
 			</form>
 			<Throttle
@@ -63,25 +75,32 @@ export default function Auth(props) {
 			</div>
 			<form className="login_signup_form" onSubmit={submitHandler}>
 				<input type="email" name="email" placeholder="Email Address" />
-				<div className="pw_container">
+				<div className="pw_container_1">
 					<input
-						type={showPw ? "text" : "password"}
+						type={showPw1 ? "text" : "password"}
 						name="password"
 						placeholder="Password"
 						defaultValue=""
 					/>
 					<img
-						onClick={showPwHandler}
-						src={showPw ? show_pw : hide_pw}
+						onClick={showPwHandler1}
+						src={showPw1 ? show_pw : hide_pw}
 						alt="Show/Hide PW"
 					/>
 				</div>
-				<input
-					type="password"
-					name="password"
-					placeholder="Password"
-					defaultValue=""
-				/>
+				<div className="pw_container_2">
+					<input
+						type={showPw2 ? "text" : "password"}
+						name="password"
+						placeholder="Password"
+						defaultValue=""
+					/>
+					<img
+						onClick={showPwHandler2}
+						src={showPw2 ? show_pw : hide_pw}
+						alt="Show/Hide PW"
+					/>
+				</div>
 				<input type="submit" value="Submit" className="auth_submit" />
 			</form>
 			<Throttle
