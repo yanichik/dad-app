@@ -10,7 +10,7 @@ const Layout = (props) => {
 	return (
 		<Fragment>
 			<main>
-				{isAuthenticated && <p>Logged In!</p>}
+				{isAuthenticated ? <p>Logged In!</p> : <p>Logged Out!</p>}
 				{ctx.isLoggedIn && <Navbar />}
 				{!ctx.isLoggedIn && <Auth />}
 				{props.children}

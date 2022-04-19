@@ -4,7 +4,9 @@ import AuthImg from "../assets/AuthImg";
 import Throttle from "../components/UI/Throttle";
 import show_pw from "../assets/show_pw.png";
 import hide_pw from "../assets/hide_pw.png";
+import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../components/Auth/login-button";
+import LogoutButton from "../components/Auth/logout-button";
 
 export default function Auth(props) {
 	const [showLogin, setShowLogin] = useState(true);
@@ -12,6 +14,7 @@ export default function Auth(props) {
 	const [showPw2, setShowPw2] = useState(false);
 	// const [pw1, setPw1] = useState("");
 	// const [pw2, setPw2] = useState("");
+	const { isAuthenticated } = useAuth0();
 
 	const showPwHandler1 = () => {
 		setShowPw1((prev) => !prev);
@@ -58,7 +61,6 @@ export default function Auth(props) {
 					/>
 				</div>
 				<input type="submit" value="Submit" className="auth_submit" />
-				
 			</form>
 			<Throttle
 				showLeftThrottle={showLogin}
@@ -116,6 +118,7 @@ export default function Auth(props) {
 
 	return (
 		<Fragment>
+			{isAuthenticated && <LogoutButton />}
 			<AuthImg />
 			<Routes>
 				<Route path="/" element={loginDiv} />
