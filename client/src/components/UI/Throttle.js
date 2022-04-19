@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import LoginButton from "../Auth/login-button";
 
 export default function Throttle(props) {
 	const throttleHandler = (e) => {
@@ -9,7 +10,8 @@ export default function Throttle(props) {
 	return (
 		<Fragment>
 			<div className={props.throttleClass}>
-				<Link
+				<LoginButton />
+				{/* <Link
 					to={`/${props.buttonNames.throttle_left.toLowerCase()}`}
 					onClick={throttleHandler}
 					className={
@@ -17,7 +19,7 @@ export default function Throttle(props) {
 					}
 				>
 					{props.buttonNames.throttle_left}
-				</Link>
+				</Link> */}
 				<Link
 					to={`/${props.buttonNames.throttle_right.toLowerCase()}`}
 					onClick={throttleHandler}

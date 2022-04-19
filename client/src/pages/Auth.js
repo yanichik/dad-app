@@ -4,6 +4,7 @@ import AuthImg from "../assets/AuthImg";
 import Throttle from "../components/UI/Throttle";
 import show_pw from "../assets/show_pw.png";
 import hide_pw from "../assets/hide_pw.png";
+import LoginButton from "../components/Auth/login-button";
 
 export default function Auth(props) {
 	const [showLogin, setShowLogin] = useState(true);
@@ -57,6 +58,7 @@ export default function Auth(props) {
 					/>
 				</div>
 				<input type="submit" value="Submit" className="auth_submit" />
+				
 			</form>
 			<Throttle
 				showLeftThrottle={showLogin}
