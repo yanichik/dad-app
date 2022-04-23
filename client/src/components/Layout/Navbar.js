@@ -7,8 +7,12 @@ const Navbar = () => {
 	// const ctx = useContext(AuthContext);
 	return (
 		<Fragment>
-			<header className="header">
-				<div className="logo">Dad App</div>
+			<header className="nav_header">
+				<div className="nav_logo">
+					<NavLink to="/" activeClassName="active">
+						Dad App
+					</NavLink>
+				</div>
 				<nav className="nav">
 					<ul>
 						<li>
@@ -16,18 +20,18 @@ const Navbar = () => {
 							{/* <NavLink to="/???" activeClassName="active">
 
 						</NavLink> */}
-							{/* <NavLink to="/favorites" activeClassName="active">
-							Favorites Icon
-						</NavLink> */}
+							<NavLink to="/favorites" activeClassName="active">
+								Favs
+							</NavLink>
 						</li>
 						{/* create search bar */}
 						{/* <li>
 						<SearchInput />
 					</li> */}
 						<li>
-							{/* <NavLink to="/profile" activeClassName="active">
-							<Profile />
-						</NavLink> */}
+							<NavLink to="/profile" activeClassName="active">
+								<Profile />
+							</NavLink>
 						</li>
 						{/* put here logout link with icon */}
 						{/* <li>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Auth from "./pages/Auth";
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
 import logo from "./logo.svg";
@@ -11,7 +13,7 @@ import AuthContext from "./store/auth-context";
 function App() {
 	const [activities, setActivities] = useState([]);
 	const [activitiesFetched, setActivitiesFetched] = useState(false);
-
+	const { isAuthenticated } = useAuth0();
 	useEffect(() => {
 		if (!activitiesFetched) {
 			async function fetchActivities() {
@@ -36,22 +38,19 @@ function App() {
 		<AuthContext.Provider value={{ isLoggedIn: false }}>
 			<BrowserRouter>
 				<Layout>
-					<div className="App">
-						<header className="App-header">
-							<img src={logo} className="App-logo" alt="logo" />
-							<p>
-								Edit <code>src/App.js</code> and save to reload.
-							</p>
-							<a
-								className="App-link"
-								href="https://reactjs.org"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{status}
-							</a>
-						</header>
-					</div>
+					<Routes>
+						<Route
+							path="/"
+							element={
+								isAuthenticated ? (
+									<Navigate replace to="/dashboard" />
+								) : (
+									<Auth />
+								)
+							}
+						></Route>
+						<Route path="/dashboard" element={<Dashboard />}></Route>
+					</Routes>
 				</Layout>
 			</BrowserRouter>
 		</AuthContext.Provider>

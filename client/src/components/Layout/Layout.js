@@ -1,18 +1,27 @@
 import { Fragment, useContext } from "react";
 import Navbar from "./Navbar";
 import Auth from "../../pages/Auth";
-import AuthContext from "../../store/auth-context";
 import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "../Auth/logout-button";
 
 const Layout = (props) => {
-	const { isAuthenticated } = useAuth0();
-	const ctx = useContext(AuthContext);
+	const { isAuthenticated, isLoading } = useAuth0();
+	if (isLoading) {
+		return <div>Loading ...</div>;
+	}
 	return (
 		<Fragment>
 			<main>
-				{isAuthenticated ? <p>Logged In!</p> : <p>Logged Out!</p>}
-				{ctx.isLoggedIn && <Navbar />}
-				{!ctx.isLoggedIn && <Auth />}
+				{isAuthenticated ? (
+					<div>
+						<p style={{ fontSize: "10px", margin: "0px" }}>Logged In!</p>
+						<LogoutButton />
+					</div>
+				) : (
+					<p style={{ fontSize: "10px", margin: "0px" }}>Logged Out!</p>
+				)}
+				{isAuthenticated && <Navbar />}
+				{/* {!isAuthenticated && <Auth />} */}
 				{props.children}
 			</main>
 		</Fragment>
