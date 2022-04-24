@@ -31,7 +31,7 @@ const Navbar = () => {
 							onClick={backOneHandler}
 							className="back_arrow"
 							src={back_arrow}
-							alt="Back Arrow"
+							alt="Navigate Back One"
 						/>
 					</div>
 				</div>

@@ -15,13 +15,11 @@ const Layout = (props) => {
 				{isAuthenticated ? (
 					<div>
 						<p style={{ fontSize: "10px", margin: "0px" }}>Logged In!</p>
-						<LogoutButton />
 					</div>
 				) : (
 					<p style={{ fontSize: "10px", margin: "0px" }}>Logged Out!</p>
 				)}
 				{isAuthenticated && <Navbar />}
-				{/* {!isAuthenticated && <Auth />} */}
 				{props.children}
 			</main>
 		</Fragment>

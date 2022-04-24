@@ -1,0 +1,27 @@
+.dashboard {
+	width: 95%;
+	/* display: flex; */
+	/* flex-direction: column; */
+}
+.activities_nearby {
+	display: grid;
+	/* justify-content: center; */
+	grid-template-columns: repeat(auto-fill, 47.5%);
+	grid-column-gap: 2.5%;
+	/* grid-row-gap: 2.5%; */
+}
+.activity_card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.activities_nearby img {
+	object-fit: cover;
+	width: 100%;
+	height: 170px;
+}
+.activities_nearby p {
+	align-self: flex-start;
+  margin: 0;
+  padding: 0;
+}
