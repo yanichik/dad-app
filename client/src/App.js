@@ -9,6 +9,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Layout from "./components/Layout/Layout";
 import AuthContext from "./store/auth-context";
+import Profile from "./pages/Profile";
 
 function App() {
 	const [activities, setActivities] = useState([]);
@@ -50,6 +51,8 @@ function App() {
 							}
 						></Route>
 						<Route path="/dashboard" element={<Dashboard />}></Route>
+						<Route path="/favorites" element={<p>Favorites</p>}></Route>
+						<Route path="/profile" element={<Profile />}></Route>
 					</Routes>
 				</Layout>
 			</BrowserRouter>

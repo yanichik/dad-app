@@ -1,5 +1,5 @@
 import { Fragment } from "react";
 
 export default function Profile(props) {
-	return <Fragment>Prof{props.children}</Fragment>;
+	return <Fragment>Profile{props.children}</Fragment>;
 }
