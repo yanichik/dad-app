@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Activity = require("../models/activity");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
 
 // const dbURL = process.env.MONGO_ATLAS_URI;
-const dbURL = "mongodb://127.0.0.1/dadApp";
+// const dbURL = "mongodb://127.0.0.1/dadApp";
 
 //Set up default mongoose connection
-// var dbURL = process.env.MONGO_ATLAS_URI || "mongodb://127.0.0.1/dadApp";
+// var dbURL = process.env.MONGO_ATLAS_URI;
+var dbURL = process.env.MONGO_ATLAS_URI || "mongodb://127.0.0.1/dadApp";
 mongoose
 	.connect(dbURL, {
 		useNewUrlParser: true,
