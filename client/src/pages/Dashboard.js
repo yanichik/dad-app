@@ -7,7 +7,7 @@ export default function Dashboard(props) {
 	return (
 		<React.Fragment>
 			<p>Dashboard</p>
-			<ActivitiesNearby />
+			<ActivitiesNearby activities={props.activities} />
 			{/* <FindThingsNearYou /> */}
 			{/* <AllTopics /> */}
 		</React.Fragment>

@@ -18,6 +18,7 @@ function App() {
 	const { isAuthenticated } = useAuth0();
 	useEffect(() => {
 		if (!activitiesFetched) {
+			console.log("inside useEffect");
 			async function fetchActivities() {
 				const response = await axios({
 					method: "GET",
@@ -51,9 +52,10 @@ function App() {
 								)
 							}
 						></Route>
-						<Route path="/dashboard" element={<Dashboard />}>
-							
-						</Route>
+						<Route
+							path="/dashboard"
+							element={<Dashboard activities={activities} />}
+						></Route>
 						<Route path="/favorites" element={<p>Favorites</p>}></Route>
 						<Route path="/profile" element={<Profile />}></Route>
 						<Route path="*" element={<ErrorPage />}></Route>
