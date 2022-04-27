@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
+import ErrorPage from "./pages/ErrorPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
@@ -50,9 +51,12 @@ function App() {
 								)
 							}
 						></Route>
-						<Route path="/dashboard" element={<Dashboard />}></Route>
+						<Route path="/dashboard" element={<Dashboard />}>
+							
+						</Route>
 						<Route path="/favorites" element={<p>Favorites</p>}></Route>
 						<Route path="/profile" element={<Profile />}></Route>
+						<Route path="*" element={<ErrorPage />}></Route>
 					</Routes>
 				</Layout>
 			</BrowserRouter>

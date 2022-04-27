@@ -8,7 +8,7 @@
 	/* justify-content: center; */
 	grid-template-columns: repeat(auto-fill, 47.5%);
 	grid-column-gap: 2.5%;
-	/* grid-row-gap: 2.5%; */
+	grid-row-gap: 2.5%;
 }
 .activity_card {
 	display: flex;
